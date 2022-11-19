@@ -6,11 +6,14 @@ for (var i = 0; i<numberOfDrums; i++) {
     var buttonInnerHTMl = this.innerHTML;
 
     buttonSound(buttonInnerHTMl);
+
+    buttonAnimation(buttonInnerHTMl);
     })};
 
     document.addEventListener("keypress", function(event){
         
         buttonSound(event.key);
+        buttonAnimation(event.key);
         console.log(event);
     
     });
@@ -58,7 +61,16 @@ for (var i = 0; i<numberOfDrums; i++) {
     }
 }
 
+function buttonAnimation(currentKey){
 
+    var activeKey = document.querySelector("." + currentKey);
+
+    activeKey.classList.add("pressed");
+
+    setTimeout(() => {
+        activeKey.classList.remove("pressed");  
+    }, 100);
+}
 
 //constructive function with new keyword
 //how to add audio to JS
